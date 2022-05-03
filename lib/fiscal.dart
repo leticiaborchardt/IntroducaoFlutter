@@ -26,7 +26,7 @@ class NotaFiscal {
   double calcularValorTotal() {
     double total = 0.0;
     for (int i = 0; i < itens.length; i++) {
-     total += itens[i].calcularValorTotal();
+      total += itens[i].calcularValorTotal();
     }
     return total;
   }
@@ -52,8 +52,8 @@ class NotaFiscal {
     for (ItemNF item in itens) {
       if (itemMaisBarato == null) {
         itemMaisBarato = item;
-      } else
-      if (item.calcularValorTotal() < itemMaisBarato.calcularValorTotal()) {
+      } else if (item.calcularValorTotal() <
+          itemMaisBarato.calcularValorTotal()) {
         itemMaisBarato = item;
       }
     }
@@ -65,25 +65,25 @@ class NotaFiscal {
     for (ItemNF item in itens) {
       if (itemMaisCaro == null) {
         itemMaisCaro = item;
-      } else
-      if (item.calcularValorTotal() > itemMaisCaro.calcularValorTotal()) {
+      } else if (item.calcularValorTotal() >
+          itemMaisCaro.calcularValorTotal()) {
         itemMaisCaro = item;
       }
     }
     return itemMaisCaro;
   }
 
-  ItemNF? addItem({
-    required String produto,
-    required double valor,
-    double desconto = 0.0,
-    double acrescimo = 0.0}) {
-  ItemNF item = ItemNF(
-      numSeq: itens.length + 1,
-      produto: produto,
-      valor: valor,
-      desconto: desconto,
-      acrescimo: acrescimo);
+  ItemNF? addItem(
+      {required String produto,
+      required double valor,
+      double desconto = 0.0,
+      double acrescimo = 0.0}) {
+    ItemNF item = ItemNF(
+        numSeq: itens.length + 1,
+        produto: produto,
+        valor: valor,
+        desconto: desconto,
+        acrescimo: acrescimo);
     itens.add(item);
     return item;
   }
@@ -96,12 +96,12 @@ class ItemNF {
   double desconto;
   double acrescimo;
 
-  ItemNF({
-    required this.numSeq,
-    required this.produto,
-    required this.valor,
-    this.desconto = 0.0,
-    this.acrescimo = 0.0});
+  ItemNF(
+      {required this.numSeq,
+      required this.produto,
+      required this.valor,
+      this.desconto = 0.0,
+      this.acrescimo = 0.0});
 
   double calcularValorTotal() {
     return valor + acrescimo - desconto;
@@ -113,27 +113,24 @@ class ItemNF {
   }
 }
 
-
-void mainNotaFiscal (){
-
+void mainNotaFiscal() {
   final pessoa = Pessoa(
-      nome: 'Letícia',
-      cpf: '090.878.878-36',
-      nascimento: DateTime(2005,3,22),
+    nome: 'Letícia',
+    cpf: '090.878.878-36',
+    nascimento: DateTime(2005, 3, 22),
   );
 
   final nota = NotaFiscal(
-    cliente: pessoa,
-    emissao: DateTime(2022,3,5),
-    enderecoEntrega: 'Rua Figueira 185',
-    numero: 561
-  );
+      cliente: pessoa,
+      emissao: DateTime(2022, 3, 5),
+      enderecoEntrega: 'Rua Figueira 185',
+      numero: 561);
 
   nota.addItem(produto: 'computador', valor: 1500.50, desconto: 100);
   nota.addItem(produto: 'celular', valor: 2000, desconto: 100, acrescimo: 200);
 
-
-  print('Nota Fiscal: ${nota.numero}, ${nota.cliente}, ${nota.emissao}, ${nota.enderecoEntrega},'
+  print(
+      'Nota Fiscal: ${nota.numero}, ${nota.cliente}, ${nota.emissao}, ${nota.enderecoEntrega},'
       '\n Valor Total: ${nota.calcularValorTotal()}, '
       '\n Itens: ${nota.itens}, '
       '\n Item mais Caro: ${nota.getProdutoMaisCaro()}, '
