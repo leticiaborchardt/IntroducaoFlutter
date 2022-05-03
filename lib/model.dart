@@ -65,22 +65,24 @@ class Programador extends Pessoa {
 }
 
 void mainEntidades() {
-  final map = {
-    'nome' : 'Letícia',
-    'cpf' : '090.887.889-65',
-    'nascimento' : '2005-03-22',
-    'sexo' : 'F',
-    'salario' : '10000.00'
-  };
+  // final map = {
+  //   'nome' : 'Letícia',
+  //   'cpf' : '090.887.889-65',
+  //   'nascimento' : '2005-03-22',
+  //   'sexo' : 'F',
+  //   'salario' : '10000.00'
+  // };
 
-  Pessoa pessoa = Programador.fromMap(map);
+  // Pessoa pessoa = Programador.fromMap(map);
+  // print(pessoa);
 
-  //Programador pessoa = Programador();
-  //pessoa.nome = "Letícia";
-  //pessoa.cpf = "090.878.389-21";
-  //pessoa.nascimento = DateTime(2005, 3, 22);
-  //pessoa.sexo = Sexo.FEMININO;
-  //pessoa.salario = 1500.00;
+  List<String> nomes = ['Leticia', 'Alanis', 'Zezinho'];
 
-  print(pessoa);
+  for (int i = 0; i < nomes.length; i++) {
+    if (nomes[i].toUpperCase().startsWith('L')) {
+      continue;
+    }
+
+    print("$i - ${nomes[i]}");
+  }
 }
