@@ -1,4 +1,4 @@
-import 'dart:collection';
+
 import 'package:introducao_flutter/model.dart';
 
 class Pessoa {
@@ -33,7 +33,7 @@ class NotaFiscal {
   }
 
   bool possuiDesconto() {
-    return itens.map((e) => e.desconto).any((d) => true);
+    return itens.any((e) => e.desconto > 0.0);
   }
 
   List<ItemNF> itensComDesconto() {
